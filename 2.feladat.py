@@ -1,16 +1,21 @@
-b1=2
-b2=10
-A=[100,101,1001]
+A=[100, 45]
 B=[]
 
-def binaryToDecimal(binary):
-    for binary in binary[:]:
+def convert(numbers, b1, b2):
+    for numbers in numbers[:]:
         decimal, i = 0, 0
-        while (binary != 0):
-            dec = binary % 10
+        while (numbers != 0):
+            dec = numbers % 10
             decimal = decimal + dec * pow(b1, i)
-            binary = binary // 10
+            numbers = numbers // 10
             i += 1
-        B.append(decimal)
+
+        number, i =0,0
+        while(decimal !=0):
+            modulo= decimal %2
+            number=number+modulo * pow(10,i)
+            decimal=decimal//b2
+            i+=1
+        B.append(number)
     print(B)
-binaryToDecimal(A)
+convert(A,6,8)
