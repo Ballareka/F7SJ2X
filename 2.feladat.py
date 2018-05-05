@@ -1,4 +1,4 @@
-A=[100, 45]
+A=[45]
 B=[]
 
 def convert(numbers, b1, b2):
@@ -12,10 +12,10 @@ def convert(numbers, b1, b2):
 
         number, i =0,0
         while(decimal !=0):
-            modulo= decimal %2
+            modulo= decimal % b2
             number=number+modulo * pow(10,i)
-            decimal=decimal//b2
+            decimal=decimal // b2
             i+=1
         B.append(number)
     print(B)
-convert(A,6,8)
+convert(A,6,10)
