@@ -13,3 +13,19 @@ def convertToBase3(x):                           # a számjegyekhez az összes l
         i+=1
     return number
 
+def calculate():
+    for i in range(0,combinations +1):
+
+        rep=str(convertToBase3(i))
+        for i in range(len(rep),9):
+            rep="0"+ rep
+        variatons = list(rep)
+
+        equat=""
+        for i in range(0,len(digits)):
+            equat += ops[int(variatons[i])] + str(digits[i])
+        if (eval(equat)==100):
+            solutions.append(equat + "=100")
+calculate()
+print(solutions)
+
