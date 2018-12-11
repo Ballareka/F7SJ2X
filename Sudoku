@@ -1,0 +1,626 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'C:\Users\Fruzsi\OneDrive - Debreceni Egyetem\Egyetem\III. felev\prog2\vd4jnp\sudoku.ui'
+#
+# Created by: PyQt5 UI code generator 5.11.3
+#
+# WARNING! All changes made in this file will be lost!
+
+import numpy as np
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QPushButton, QTableWidget, QTableWidgetItem
+
+
+class Ui_Sodoku(object):
+
+    def setupUi(self, Sodoku):
+        Sodoku.setObjectName("Sodoku")
+        Sodoku.resize(800, 600)
+        Sodoku.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.Zimbabwe))
+        self.centralwidget = QtWidgets.QWidget(Sodoku)
+        self.centralwidget.setObjectName("centralwidget")
+        self.table = QtWidgets.QTableWidget(self.centralwidget)
+        self.table.setGeometry(QtCore.QRect(290, 70, 461, 461))
+        self.table.setMinimumSize(QtCore.QSize(9, 9))
+        self.table.setSizeIncrement(QtCore.QSize(9, 8))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.table.setFont(font)
+        self.table.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.table.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.table.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.table.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.table.setAlternatingRowColors(False)
+        self.table.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.table.setTextElideMode(QtCore.Qt.ElideNone)
+        self.table.setShowGrid(True)
+        self.table.setGridStyle(QtCore.Qt.CustomDashLine)
+        self.table.setWordWrap(True)
+        self.table.setCornerButtonEnabled(True)
+        self.table.setRowCount(9)
+        self.table.setColumnCount(9)
+        self.table.setObjectName("table")
+        self.table.horizontalHeader().setVisible(False)
+        self.table.horizontalHeader().setCascadingSectionResizes(False)
+        self.table.horizontalHeader().setDefaultSectionSize(50)
+        self.table.horizontalHeader().setHighlightSections(False)
+        self.table.horizontalHeader().setMinimumSectionSize(25)
+        self.table.horizontalHeader().setSortIndicatorShown(False)
+        self.table.horizontalHeader().setStretchLastSection(False)
+        self.table.verticalHeader().setVisible(False)
+        self.table.verticalHeader().setCascadingSectionResizes(False)
+        self.table.verticalHeader().setDefaultSectionSize(50)
+        self.table.verticalHeader().setHighlightSections(False)
+        self.table.verticalHeader().setMinimumSectionSize(25)
+        self.table.verticalHeader().setSortIndicatorShown(False)
+        self.table.verticalHeader().setStretchLastSection(False)
+
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(20, 30, 321, 31))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.btneasy = QtWidgets.QPushButton(self.centralwidget)
+        self.btneasy.setGeometry(QtCore.QRect(30, 100, 141, 28))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(12)
+        self.btneasy.setFont(font)
+        self.btneasy.setObjectName("btneasy")
+        self.checkhelp = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkhelp.setGeometry(QtCore.QRect(20, 460, 231, 21))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(12)
+        self.checkhelp.setFont(font)
+        self.checkhelp.setObjectName("checkhelp")
+        self.btnmedium = QtWidgets.QPushButton(self.centralwidget)
+        self.btnmedium.setGeometry(QtCore.QRect(30, 160, 141, 28))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(12)
+        self.btnmedium.setFont(font)
+        self.btnmedium.setObjectName("btnmedium")
+        self.btnhard = QtWidgets.QPushButton(self.centralwidget)
+        self.btnhard.setGeometry(QtCore.QRect(30, 220, 141, 28))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(12)
+        self.btnhard.setFont(font)
+        self.btnhard.setObjectName("btnhard")
+
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setGeometry(QtCore.QRect(432, 70, 20, 461))
+        self.line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setLineWidth(3)
+        self.line.setObjectName("line")
+        self.line_2 = QtWidgets.QFrame(self.centralwidget)
+        self.line_2.setGeometry(QtCore.QRect(582, 70, 20, 461))
+        self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setLineWidth(3)
+        self.line_2.setObjectName("line_2")
+        self.line_3 = QtWidgets.QFrame(self.centralwidget)
+        self.line_3.setGeometry(QtCore.QRect(290, 212, 461, 16))
+        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setLineWidth(3)
+        self.line_3.setObjectName("line_3")
+        self.line_4 = QtWidgets.QFrame(self.centralwidget)
+        self.line_4.setGeometry(QtCore.QRect(290, 362, 461, 16))
+        self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_4.setLineWidth(3)
+        self.line_4.setObjectName("line_4")
+        self.btnhard_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btnhard_2.setGeometry(QtCore.QRect(70, 510, 141, 28))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(12)
+        self.btnhard_2.setFont(font)
+        self.btnhard_2.setObjectName("btnhard_2")
+
+
+        self.btnhard.clicked.connect(self.chooseHard)
+        self.btnmedium.clicked.connect(self.chooseMedium)
+        self.btneasy.clicked.connect(self.chooseEasy)
+        self.table.cellChanged.connect(self.checkifint)  # csak akkor hivodik meg ha megvaltozik a cellatartalom
+        #self.checkhelp.stateChanged.connect(self.playwithHelp)
+        self.table.cellChanged.connect(self.playwithHelp)  # mindig meghívjuk a playwithhelpet, es benne megnezzuk be van-e pipalva a help
+        self.btnhard_2.clicked.connect(self.finishEd)
+
+        Sodoku.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(Sodoku)
+        self.statusbar.setObjectName("statusbar")
+        Sodoku.setStatusBar(self.statusbar)
+
+        self.retranslateUi(Sodoku)
+        QtCore.QMetaObject.connectSlotsByName(Sodoku)
+
+
+    def retranslateUi(self, Sodoku):
+        _translate = QtCore.QCoreApplication.translate
+        Sodoku.setWindowTitle(_translate("Sodoku", "Sudoku"))
+        self.table.setSortingEnabled(False)
+        self.label.setText(_translate("Sodoku", "Choose difficulty and start the game"))
+        self.btneasy.setText(_translate("Sodoku", "EASY"))
+        self.checkhelp.setText(_translate("Sodoku", "I want to play with help"))
+        self.btnmedium.setText(_translate("Sodoku", "MEDIUM"))
+        self.btnhard.setText(_translate("Sodoku", "HARD"))
+        self.btnhard_2.setText(_translate("Sodoku", "FINISH"))
+
+
+    def chooseEasy(self):
+        self.table.clear()
+        self.table.setItem(0, 0, QTableWidgetItem('1'))
+        self.table.setItem(0, 3, QTableWidgetItem('4'))
+        self.table.setItem(0, 4, QTableWidgetItem('8'))
+        self.table.setItem(0, 5, QTableWidgetItem('9'))
+        self.table.setItem(0, 8, QTableWidgetItem('6'))
+        self.table.setItem(1, 0, QTableWidgetItem('7'))
+        self.table.setItem(1, 1, QTableWidgetItem('3'))
+        self.table.setItem(1, 7, QTableWidgetItem('4'))
+        self.table.setItem(2, 5, QTableWidgetItem('1'))
+        self.table.setItem(2, 6, QTableWidgetItem('2'))
+        self.table.setItem(2, 7, QTableWidgetItem('9'))
+        self.table.setItem(2, 8, QTableWidgetItem('5'))
+        self.table.setItem(3, 2, QTableWidgetItem('7'))
+        self.table.setItem(3, 3, QTableWidgetItem('1'))
+        self.table.setItem(3, 4, QTableWidgetItem('2'))
+        self.table.setItem(3, 6, QTableWidgetItem('6'))
+        self.table.setItem(4, 0, QTableWidgetItem('5'))
+        self.table.setItem(4, 3, QTableWidgetItem('7'))
+        self.table.setItem(4, 5, QTableWidgetItem('3'))
+        self.table.setItem(4, 8, QTableWidgetItem('8'))
+        self.table.setItem(5, 2, QTableWidgetItem('6'))
+        self.table.setItem(5, 4, QTableWidgetItem('9'))
+        self.table.setItem(5, 5, QTableWidgetItem('5'))
+        self.table.setItem(5, 6, QTableWidgetItem('7'))
+        self.table.setItem(6, 0, QTableWidgetItem('9'))
+        self.table.setItem(6, 1, QTableWidgetItem('1'))
+        self.table.setItem(6, 2, QTableWidgetItem('4'))
+        self.table.setItem(6, 3, QTableWidgetItem('6'))
+        self.table.setItem(7, 1, QTableWidgetItem('2'))
+        self.table.setItem(7, 7, QTableWidgetItem('3'))
+        self.table.setItem(7, 8, QTableWidgetItem('7'))
+        self.table.setItem(8, 0, QTableWidgetItem('8'))
+        self.table.setItem(8, 3, QTableWidgetItem('5'))
+        self.table.setItem(8, 4, QTableWidgetItem('1'))
+        self.table.setItem(8, 5, QTableWidgetItem('2'))
+        self.table.setItem(8, 4, QTableWidgetItem('1'))
+        self.table.setItem(8, 8, QTableWidgetItem('4'))
+        for i in range(10):
+            for j in range(10):
+                if self.table.item(i, j) != None:
+                    self.table.item(i, j).setForeground(QtGui.QColor(255, 84, 187))
+                    self.table.item(i, j).setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.table.item(i, j).setFlags(Qt.ItemIsSelectable)
+
+    def chooseMedium(self):
+        self.table.clear()
+        self.table.setItem(0, 1, QTableWidgetItem('7'))
+        self.table.setItem(0, 2, QTableWidgetItem('1'))
+        self.table.setItem(0, 4, QTableWidgetItem('9'))
+        self.table.setItem(0, 6, QTableWidgetItem('8'))
+        self.table.setItem(1, 3, QTableWidgetItem('3'))
+        self.table.setItem(1, 5, QTableWidgetItem('6'))
+        self.table.setItem(2, 0, QTableWidgetItem('4'))
+        self.table.setItem(2, 1, QTableWidgetItem('9'))
+        self.table.setItem(2, 6, QTableWidgetItem('7'))
+        self.table.setItem(2, 8, QTableWidgetItem('5'))
+        self.table.setItem(3, 1, QTableWidgetItem('1'))
+        self.table.setItem(3, 3, QTableWidgetItem('9'))
+        self.table.setItem(4, 0, QTableWidgetItem('9'))
+        self.table.setItem(4, 2, QTableWidgetItem('2'))
+        self.table.setItem(4, 6, QTableWidgetItem('6'))
+        self.table.setItem(4, 8, QTableWidgetItem('3'))
+        self.table.setItem(5, 5, QTableWidgetItem('8'))
+        self.table.setItem(5, 7, QTableWidgetItem('2'))
+        self.table.setItem(6, 0, QTableWidgetItem('8'))
+        self.table.setItem(6, 2, QTableWidgetItem('5'))
+        self.table.setItem(6, 7, QTableWidgetItem('7'))
+        self.table.setItem(6, 8, QTableWidgetItem('6'))
+        self.table.setItem(7, 3, QTableWidgetItem('6'))
+        self.table.setItem(7, 5, QTableWidgetItem('7'))
+        self.table.setItem(8, 2, QTableWidgetItem('7'))
+        self.table.setItem(8, 4, QTableWidgetItem('4'))
+        self.table.setItem(8, 6, QTableWidgetItem('3'))
+        self.table.setItem(8, 7, QTableWidgetItem('5'))
+        for i in range(10):
+            for j in range(10):
+                if self.table.item(i, j) != None:
+                    self.table.item(i, j).setForeground(QtGui.QColor(255, 84, 187))
+                    self.table.item(i, j).setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.table.item(i, j).setFlags(Qt.ItemIsSelectable)
+
+    def chooseHard(self):
+        self.table.clear()
+        self.table.setItem(0, 0, QTableWidgetItem('8'))
+        self.table.setItem(0, 1, QTableWidgetItem('3'))
+        self.table.setItem(0, 3, QTableWidgetItem('1'))
+        self.table.setItem(0, 6, QTableWidgetItem('6'))
+        self.table.setItem(0, 8, QTableWidgetItem('5'))
+        self.table.setItem(1, 7, QTableWidgetItem('8'))
+        self.table.setItem(2, 3, QTableWidgetItem('7'))
+        self.table.setItem(2, 6, QTableWidgetItem('9'))
+        self.table.setItem(3, 1, QTableWidgetItem('5'))
+        self.table.setItem(3, 4, QTableWidgetItem('1'))
+        self.table.setItem(3, 5, QTableWidgetItem('7'))
+        self.table.setItem(4, 2, QTableWidgetItem('3'))
+        self.table.setItem(4, 6, QTableWidgetItem('2'))
+        self.table.setItem(5, 3, QTableWidgetItem('3'))
+        self.table.setItem(5, 4, QTableWidgetItem('4'))
+        self.table.setItem(5, 7, QTableWidgetItem('1'))
+        self.table.setItem(6, 2, QTableWidgetItem('4'))
+        self.table.setItem(6, 5, QTableWidgetItem('8'))
+        self.table.setItem(7, 1, QTableWidgetItem('9'))
+        self.table.setItem(8, 0, QTableWidgetItem('3'))
+        self.table.setItem(8, 0, QTableWidgetItem('3'))
+        self.table.setItem(8, 2, QTableWidgetItem('2'))
+        self.table.setItem(8, 5, QTableWidgetItem('6'))
+        self.table.setItem(8, 7, QTableWidgetItem('4'))
+        self.table.setItem(8, 8, QTableWidgetItem('7'))
+
+        for i in range(10):
+            for j in range(10):
+                if self.table.item(i, j) != None:
+                    self.table.item(i, j).setForeground(QtGui.QColor(255, 84, 187))
+                    self.table.item(i, j).setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.table.item(i, j).setFlags(Qt.ItemIsSelectable)
+
+    def checkifint(self):
+        r = self.table.currentRow()
+        c = self.table.currentColumn()
+        i = self.table.currentItem()
+
+        if i is None:
+            return
+
+        i = i.text()
+
+        if i.isdigit() and int(i)>0 and int(i)<10:
+            pass
+        else:
+            msg = QtWidgets.QMessageBox()
+            msg.setWindowTitle("Warning")
+            msg.setIcon(QtWidgets.QMessageBox.Warning)
+            msg.setText("You didn't entered a number or the number is not between 1 and 9!")
+            msg.exec()
+            self.table.setItem(r, c, None)
+
+    def playwithHelp(self):
+
+        if not self.checkhelp.checkState(): #ha nem kell neki segitseg akkor nem kap
+            return
+
+        ls_a = [self.table.item(0, 0), self.table.item(0, 1), self.table.item(0, 2),
+                self.table.item(1, 0), self.table.item(1, 1), self.table.item(1, 2),
+                self.table.item(2, 0), self.table.item(2, 1), self.table.item(2, 2)]
+        ls_b = [self.table.item(0, 3), self.table.item(0, 4), self.table.item(0, 5),
+                self.table.item(1, 3), self.table.item(1, 4), self.table.item(1, 5),
+                self.table.item(2, 3), self.table.item(2, 3), self.table.item(2, 5)]
+
+        ls_c = [self.table.item(0, 6), self.table.item(0, 7), self.table.item(0, 8),
+                self.table.item(1, 6), self.table.item(1, 7), self.table.item(1, 8),
+                self.table.item(2, 6), self.table.item(2, 7), self.table.item(2, 8)]
+
+        ls_d = [self.table.item(3, 0), self.table.item(3, 1), self.table.item(3, 2),
+                self.table.item(4, 0), self.table.item(4, 1), self.table.item(4, 2),
+                self.table.item(5, 0), self.table.item(5, 1), self.table.item(5, 2)]
+
+        ls_e = [self.table.item(3, 3), self.table.item(3, 4), self.table.item(3, 5),
+                self.table.item(4, 3), self.table.item(4, 4), self.table.item(4, 5),
+                self.table.item(5, 3), self.table.item(5, 4), self.table.item(5, 5)]
+
+        ls_f = [self.table.item(3, 6), self.table.item(3, 7), self.table.item(3, 8),
+                self.table.item(4, 6), self.table.item(4, 7), self.table.item(4, 8),
+                self.table.item(5, 6), self.table.item(5, 7), self.table.item(5, 8)]
+
+        ls_g = [self.table.item(6, 0), self.table.item(6, 1), self.table.item(6, 2),
+                self.table.item(7, 0), self.table.item(7, 1), self.table.item(7, 2),
+                self.table.item(8, 0), self.table.item(8, 1), self.table.item(8, 2)]
+
+        ls_h = [self.table.item(6, 3), self.table.item(6, 4), self.table.item(6, 5),
+                self.table.item(7, 3), self.table.item(7, 4), self.table.item(7, 5),
+                self.table.item(8, 3), self.table.item(8, 4), self.table.item(8, 5)]
+
+        ls_i = [self.table.item(6, 6), self.table.item(6, 7), self.table.item(6, 8),
+                self.table.item(7, 6), self.table.item(7, 7), self.table.item(7, 8),
+                self.table.item(8, 6), self.table.item(8, 7), self.table.item(8, 8)]
+
+        r = self.table.currentRow()
+        c = self.table.currentColumn()
+        i = self.table.currentItem()
+
+        if i==None:           # ha átállítódika  cella None-ra, akkor is meghívódik a függvény
+            return
+
+        if True:
+            if i in ls_a:
+                for num in ls_a:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_b:
+                for num in ls_b:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_c:
+                for num in ls_c:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_d:
+                for num in ls_d:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_e:
+                for num in ls_e:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_f:
+                for num in ls_f:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_g:
+                for num in ls_g:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_h:
+                for num in ls_h:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            if i in ls_i:
+                for num in ls_i:
+                    if num == None:
+                        continue
+                    elif num == i:
+                        continue
+                    elif num.text() == i.text():
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("There is already a same number in this little square!")
+                        msg.exec()
+                        self.table.setItem(r, c, None)
+                        break
+                    else:
+                        continue
+            for n in range(0, 10):
+                y = self.table.item(int(r), int(n))
+                if y == None:
+                    n += 1
+                elif y == i:
+                    i.setTextAlignment(QtCore.Qt.AlignCenter)
+                    n += 1
+                elif y.text() == i.text():
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle("Warning!")
+                    msg.setIcon(QtWidgets.QMessageBox.Warning)
+                    msg.setText("There is already a same number in this row!")
+                    msg.exec()
+                    self.table.setItem(r, c, None)
+                    break
+                else:
+                    n += 1
+            for n in range(0, 10):
+                z = self.table.item(int(n), int(c))
+                if z == None:
+                    n += 1
+                elif z == i:
+                    i.setTextAlignment(QtCore.Qt.AlignCenter)
+                    n += 1
+                elif z.text() == i.text():
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle("Warning!")
+                    msg.setIcon(QtWidgets.QMessageBox.Warning)
+                    msg.setText("There is already a same number in this column!")
+                    msg.exec()
+                    self.table.setItem(r, c, None)
+                    break
+                else:
+                    n += 1
+        else:
+            pass
+
+    def finishEd(self):
+        ok_easy = ['1', '5', '2', '4', '8', '9', '3', '7', '6',
+                   '7', '3', '9', '2', '5', '6', '8', '4', '1',
+                   '4', '6', '8', '3', '7', '1', '2', '9', '5',
+                   '3', '8', '7', '1', '2', '4', '6', '5', '9',
+                   '5', '9', '1', '7', '6', '3', '4', '2', '8',
+                   '2', '4', '6', '8', '9', '5', '7', '1', '3',
+                   '9', '1', '4', '6', '3', '7', '5', '8', '2',
+                   '6', '2', '5', '9', '4', '8', '1', '3', '7',
+                   '8', '7', '3', '5', '1', '2', '9', '6', '4']
+
+        ok_medium = ['3', '7', '1', '5', '9', '4', '8', '6', '2',
+                     '5', '2', '8', '3', '7', '6', '1', '9', '4',
+                     '4', '9', '6', '2', '8', '1', '7', '3', '5',
+                     '6', '1', '4', '9', '2', '3', '5', '8', '7',
+                     '9', '8', '2', '7', '1', '5', '6', '4', '3',
+                     '7', '5', '3', '4', '6', '8', '9', '2', '1',
+                     '8', '4', '5', '1', '3', '9', '2', '7', '6',
+                     '2', '3', '9', '6', '5', '7', '4', '1', '8',
+                     '1', '6', '7', '8', '4', '2', '3', '5', '9']
+
+        ok_hard = ['8', '3', '7', '1', '9', '4', '6', '2', '5',
+                   '5', '4', '9', '6', '2', '3', '7', '8', '1',
+                   '6', '2', '1', '7', '8', '5', '9', '3', '4',
+                   '2', '5', '6', '8', '1', '7', '4', '9', '3',
+                   '4', '1', '3', '5', '6', '9', '2', '7', '8',
+                   '9', '7', '8', '3', '4', '2', '5', '1', '6',
+                   '1', '6', '4', '2', '7', '8', '3', '5', '9',
+                   '7', '9', '5', '4', '3', '1', '8', '6', '2',
+                   '3', '8', '2', '9', '5', '6', '1', '4', '7']
+
+        i = 0
+        if i < 81:
+            for r in range(0, 9):
+                for c in range(0, 9):
+                    if ok_easy[i] == self.table.item(r, c).text():
+                        i += 1
+                    else:
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("Your solution is not correct.")
+                        msg.exec()
+                        exit()
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Warning!")
+        msg.setIcon(QtWidgets.QMessageBox.Warning)
+        msg.setText("Your solution is correct.")
+        msg.exec()
+
+        i = 0
+        if i < 81:
+            for r in range(0, 9):
+                for c in range(0, 9):
+                    if ok_medium[i] == self.table.item(r, c).text():
+                        i += 1
+                    else:
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("Your solution is not correct.")
+                        msg.exec()
+                        exit()
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Warning!")
+        msg.setIcon(QtWidgets.QMessageBox.Warning)
+        msg.setText("Your solution is correct.")
+        msg.exec()
+
+        i = 0
+        if i < 81:
+            for r in range(0, 9):
+                for c in range(0, 9):
+                    if ok_hard[i] == self.table.item(r, c).text():
+                        i += 1
+                    else:
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Warning!")
+                        msg.setIcon(QtWidgets.QMessageBox.Warning)
+                        msg.setText("Your solution is not correct.")
+                        msg.exec()
+                        exit()
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Warning!")
+        msg.setIcon(QtWidgets.QMessageBox.Warning)
+        msg.setText("Your solution is correct.")
+        msg.exec()
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Sodoku = QtWidgets.QMainWindow()
+    ui = Ui_Sodoku()
+    ui.setupUi(Sodoku)
+    Sodoku.show()
+    sys.exit(app.exec_())
+
